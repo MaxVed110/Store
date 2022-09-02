@@ -23,8 +23,8 @@ public interface Communication {
 
     default double totalCost(Consumer consumer) {
         double total = 0;
-        for (Item item : consumer.getCorrectList()) {
-            total += item.getCost();
+        while (consumer.hasNext()) {
+            total += consumer.next().getCost();
         }
         return total;
     }

@@ -20,10 +20,10 @@ public class Seller extends Human {
         TimeUnit.SECONDS.sleep(1);
         System.out.println("Выдаю товар...");
         TimeUnit.SECONDS.sleep(2);
-        for (Item item : consumer.getCorrectList()) {
-            items.put(item, items.get(item) - 1);
-            if (items.get(item) == 0 || items.get(item) == null) {
-                items.remove(item);
+        while (consumer.hasNext()) {
+            items.put(consumer.next(), items.get(consumer.next()) - 1);
+            if (items.get(consumer.next()) == 0 || items.get(consumer.next()) == null) {
+                items.remove(consumer.next());
             }
         }
         System.out.println("Товар выдан!");

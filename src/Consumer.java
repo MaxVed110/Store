@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-public class Consumer extends Human {
+public class Consumer extends Human implements Iterator<Item> {
     Map<Item, Integer> wishList = new HashMap<>();
     private ArrayList<Item> correctList = new ArrayList<>();
 
@@ -18,9 +19,9 @@ public class Consumer extends Human {
         }
     }
 
-    public ArrayList<Item> getCorrectList() {
-        return this.correctList;
-    }
+    //public ArrayList<Item> getCorrectList() {
+    //    return this.correctList;
+    //}
 
     public void addCorrectList(Item item, int count) {
         for (int i = 0; i < count; i++) {
@@ -32,5 +33,17 @@ public class Consumer extends Human {
     public void walkInStorage(Consumer consumer) {
         System.out.println("Покупатель получил товар, списки обновлены!");
         consumer.correctList.clear();
+    }
+
+    private int index = 0;
+
+    @Override
+    public boolean hasNext() {
+        return index < this.correctList.size();
+    }
+
+    @Override
+    public Item next() {
+        return this.correctList.get(index++);
     }
 }

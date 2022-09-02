@@ -1,5 +1,4 @@
 public interface Communication {
-
     default double costOfItem(Item item) {
         return item.getCost();
     }

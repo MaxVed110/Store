@@ -21,9 +21,10 @@ public class Seller extends Human {
         System.out.println("Выдаю товар...");
         TimeUnit.SECONDS.sleep(2);
         while (consumer.hasNext()) {
-            items.put(consumer.next(), items.get(consumer.next()) - 1);
-            if (items.get(consumer.next()) == 0 || items.get(consumer.next()) == null) {
-                items.remove(consumer.next());
+            Item buf = consumer.next();
+            items.put(buf, items.get(buf) - 1);
+            if (items.get(buf) == 0 || items.get(buf) == null) {
+                items.remove(buf);
             }
         }
         System.out.println("Товар выдан!");

@@ -5,10 +5,12 @@ import java.util.Map;
 
 public class Consumer extends Human implements Iterator<Item> {
     Map<Item, Integer> wishList = new HashMap<>();
+    private int index;
     private ArrayList<Item> correctList = new ArrayList<>();
 
     public Consumer(String name, double money, int loveIndex) {
         super(name, money, loveIndex);
+        this.index = 0;
     }
 
     public void addWishList(Item item, Integer count) {
@@ -34,8 +36,6 @@ public class Consumer extends Human implements Iterator<Item> {
         System.out.println("Покупатель получил товар, списки обновлены!");
         consumer.correctList.clear();
     }
-
-    private int index = 0;
 
     @Override
     public boolean hasNext() {
